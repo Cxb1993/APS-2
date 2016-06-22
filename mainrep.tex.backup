@@ -1,0 +1,119 @@
+%%% Time-stamp: <2015-04-15 00:55:14 sunthar>
+
+%%% $Log:$
+
+%\documentclass[11pt,a4paper,openright]{report}
+\documentclass[seminar,twoside]{iitbreport}
+
+
+%% Selectively comment out sections that you want to be left out but
+%% maintaining the page numbers and other \ref
+\includeonly{%
+  declaration,
+  certificate,
+  acknowledgement,
+  intro/introduction,
+  lit/literature,
+  methods/methods,
+  Navier-Stokes/ns,
+  expt/experimental_aps1,
+  Multigrid/multigrid,
+}
+
+%%% Some commonly used packages (make sure your LaTeX installation
+%%% contains these packages, if not ask your senior to help installing
+%%% the packages)
+
+
+\usepackage{booktabs}
+\graphicspath{{images/},{images2/}}
+\usepackage{subfig}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{float}
+\setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
+%%% Macro definitionfor Commonly used symbols
+
+\usepackage[compact]{titlesec}
+\raggedbottom
+
+\usepackage{xcolor,colortbl}
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+
+\usepackage{wrapfig}
+\usepackage{framed}
+
+
+\newcommand{\etas}{\ensuremath{\eta_{\mathrm{s}}}}
+\newcommand{\Rey}{\ensuremath{\mathrm{Re}}}	
+\newcommand{\avg}[1]{\ensuremath{\overline{#1}}}
+\newcommand{\tenpow}[1]{\ensuremath{\times 10^{#1}}}
+
+\newcommand{\pder}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
+
+
+% Referencing macros
+\newcommand{\Eqref}[1]{Equation~\eqref{#1}}
+\newcommand{\Tabref}[1]{Table~\ref{#1}}
+\newcommand{\Figref}[1]{Figure~\ref{#1}}
+\newcommand{\Appref}[1]{Appendix~\ref{#1}}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+\title{Droplet Impact Dynamics}
+\author{Palas Kumar Farsoiya \\ (Roll No: 144026002 )}
+%\date{\today}
+\degree{Doctor of Philosophy}
+\dept{Chemical Engineering}
+\monthyear{August 2015}
+
+%\makecoverpage
+\maketitle
+\include{declaration}
+\include{certificate}
+\include{acknowledgement}
+\begin{abstract}
+ Droplet impingement is a very common phenomenon in the world, natural and man-made around us. 
+ Droplets are formed through instabilities such as Rayleigh-Plateau instability, but their interactions usually with other droplets, and their impingement dynamics on a
+ rigid wall are complex processes which intrigue physicists, mathematicians and engineers. For physicists the interest lies in understanding the solution of the Navier-stokes
+ equation before and after impact and various intricacies of the boundary conditions on dry rigid surfaces. Mathematicians study the asymptotic solution of the governing laws
+ of the fluid dynamics while for engineers, droplet impact is of tremendous technological importance as there are various applications e.g. silicon chip technology, ink jet printing,
+ internal combustion engines, spray painting and coating, plasma spraying and pesticide spraying on crops. \par This report begins with a short literature review of droplet impact. A detailed summary
+of progress made in developing an in-house code capable of modelling two-phase flow is presented accompanied by benchmark results. Experimental results obtained from scientific literature
+are then compared with simulations conducted using an open source code Gerris, for droplet impact on super-hydrophobic surfaces. We conclude by defining broad areas that we plan to study. 
+\end{abstract}
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+ %\include{intro/introduction}
+ %\include{lit/literature}
+ %\include{methods/methods}
+ %\include{Navier-Stokes/ns}
+ %\include{expt/experimental_aps1}
+ \include{Multigrid/multigrid}
+
+
+\bibliography{mylit}
+
+
+\end{document}
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

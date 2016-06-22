@@ -1,0 +1,100 @@
+%%% Time-stamp: <2015-04-15 00:55:14 sunthar>
+
+%%% $Log:$
+
+%\documentclass[11pt,a4paper,openright]{report}
+\documentclass[seminar,twoside]{iitbreport}
+
+
+%% Selectively comment out sections that you want to be left out but
+%% maintaining the page numbers and other \ref
+\includeonly{%
+ % intro/introduction,
+ % lit/literature,
+  methods/methods,
+ % expt/experimental,
+ %expt/VOF_Benchmark,
+ % rnd/results
+}
+
+%%% Some commonly used packages (make sure your LaTeX installation
+%%% contains these packages, if not ask your senior to help installing
+%%% the packages)
+
+
+
+
+\usepackage{booktabs}
+\graphicspath{{images/}}
+\usepackage{subfig}
+\usepackage{tabularx}
+
+
+%%% Macro definitions for Commonly used symbols
+\newcommand{\etas}{\ensuremath{\eta_{\mathrm{s}}}}
+\newcommand{\Rey}{\ensuremath{\mathrm{Re}}}
+\newcommand{\avg}[1]{\ensuremath{\overline{#1}}}
+\newcommand{\tenpow}[1]{\ensuremath{\times 10^{#1}}}
+
+\newcommand{\pder}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
+
+
+% Referencing macros
+\newcommand{\Eqref}[1]{Equation~\eqref{#1}}
+\newcommand{\Tabref}[1]{Table~\ref{#1}}
+\newcommand{\Figref}[1]{Figure~\ref{#1}}
+\newcommand{\Appref}[1]{Appendix~\ref{#1}}
+
+
+
+\begin{document}
+\title{Droplet Impact Dynamics}
+\author{Palas Kumar Farsoiya \\ (Roll No: 144026002 )}
+%\date{\today}
+\degree{Doctor of Philosophy}
+\dept{Chemical Engineering}
+\monthyear{April 2015}
+
+%\makecoverpage
+\maketitle
+%\include{acknowledgement}
+%\include{certificate}
+\begin{abstract}
+ Droplet impingement is very common phenomenon in the world around us. This can be seen in the nature as well as in the industries. It is well known
+ that the droplets are formed when there are instabilities such as Rayleigh-Plateau instability, but it is not easy to predict the complex dynamics of droplets. Droplet impact 
+ on a solid surface is one such phenomena which intrigues physicsts, mathematicians and engineers. For physicsts the interest lies in understanding the solution of Navier-stokes
+ equation before and after impact and various intricacies of the boundary conditions on the dry rigid surface,  mathematicians study the asymptotic solution of the governing laws
+ of the fluid dynamics and for engineers, droplet impact is of tremendous technolgical importance as its application lies in silicon chip techology, ink jet printing, internal combustion engines, spray painting and coating,
+ plasma spraying and crop spraying. This report presents with a short review on the droplet impact and a numerical study of droplet impact applying simple contact line and contact angle
+ models.
+\end{abstract}
+
+\pagenumbering{roman}
+\tableofcontents
+
+\listoftables
+\listoffigures
+
+\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%\include{intro/introduction}
+%\include{lit/literature}
+    \include{methods/methods}
+%\include{expt/experimental}
+%\include{expt/VOF_Benchmark}
+%\include{rnd/results}
+
+\bibliography{mylit}
+
+
+\end{document}
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -1,0 +1,435 @@
+%Merlin.mbs v4.21 2009-07-09.
+\begin{thebibliography}{28}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \ifx #1\undefined \expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+\fi
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+\fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand\href[0]{\@sanitize\@href}%
+\providecommand\@href[1]{\endgroup\@@startlink{#1}\endgroup\@@href}%
+\providecommand\@@href[1]{#1\@@endlink}%
+\providecommand \@sanitize [0]{\begingroup\catcode`\&12\catcode`\#12\relax}%
+\@ifxundefined \pdfoutput {\@firstoftwo}{%
+ \@ifnum{\z@=\pdfoutput}{\@firstoftwo}{\@secondoftwo}%
+}{%
+ \providecommand\@@startlink[1]{\leavevmode\special{html:<a href="#1">}}%
+ \providecommand\@@endlink[0]{\special{html:</a>}}%
+}{%
+ \providecommand\@@startlink[1]{%
+  \leavevmode
+  \pdfstartlink
+   attr{/Border[0 0 1 ]/H/I/C[0 1 1]}%
+   user{/Subtype/Link/A<</Type/Action/S/URI/URI(#1)>>}%
+  \relax
+ }%
+ \providecommand\@@endlink[0]{\pdfendlink}%
+}%
+\providecommand \url  [0]{\begingroup\@sanitize \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix}}%
+\providecommand \urlprefix [0]{URL }%
+\providecommand \Eprint[0]{\href }%
+\@ifxundefined \urlstyle {%
+  \providecommand \doi [1]{doi:\discretionary{}{}{}#1}%
+}{%
+  \providecommand \doi [0]{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url }%
+}%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \Doi[1]{\href{\doibase#1}}%
+\providecommand \urlhref[1]{\href{#1}}%
+\providecommand \bibAnnote [3]{%
+  \BibitemShut{#1}%
+  \begin{quotation}\noindent
+    \textsc{Key:}\ #2\\\textsc{Annotation:}\ #3%
+  \end{quotation}%
+}%
+\providecommand \bibAnnoteFile [2]{%
+  \IfFileExists{#2}{\bibAnnote {#1} {#2} {\input{#2}}}{}%
+}%
+\providecommand \typeout [0]{\immediate \write \m@ne }%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo [0]{\@secondoftwo}%
+\providecommand \bibfield [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen[0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut [1]{\csname bibitem#1\endcsname}%
+%</preamble>
+\bibitem[{\citenamefont{Bennett}\ and\
+  \citenamefont{Poulikakos}(1993)}]{Bennett1993}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Bennett}, \bibfnamefont{T.}},\ and\ \bibinfo
+  {author} {\bibfnamefont{D.}~\bibnamefont{Poulikakos}}}%
+  , \bibinfo {year} {1993},\ \bibfield{title}{%
+  {\selectlanguage {English}\enquote{\bibinfo {title} {Splat-quench
+  solidification: estimating the maximum spreading of a droplet impacting a
+  solid surface},}\ }}%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1007/BF00400880}{\bibinfo {journal} {J MATER SCI}}}\ }%
+  \textbf{\bibinfo {volume} {28}},\ \bibinfo {pages} {963--970}%
+  \bibAnnoteFile{NoStop}{Bennett1993}%
+\bibitem[{\citenamefont{Bussmann}\ \emph{et~al.}(1999)\citenamefont{Bussmann},
+  \citenamefont{Mostaghimi},\ and\ \citenamefont{Chandra}}]{Bussmann1999}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Bussmann}, \bibfnamefont{M.}}, \bibinfo
+  {author} {\bibfnamefont{J.}~\bibnamefont{Mostaghimi}},\ and\ \bibinfo
+  {author} {\bibfnamefont{S.}~\bibnamefont{Chandra}}}%
+  , \bibinfo {year} {1999},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {On a three-dimensional volume tracking model of
+  droplet impact},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {PHYS FLUIDS}}\ }%
+  \textbf{\bibinfo {volume} {11}},\ \bibinfo {pages} {1406--1417}%
+  \bibAnnoteFile{NoStop}{Bussmann1999}%
+\bibitem[{\citenamefont{Chandra}\ and\
+  \citenamefont{Avedisian}(1991)}]{Chandra1991}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Chandra}, \bibfnamefont{S.}},\ and\ \bibinfo
+  {author} {\bibfnamefont{C.~T.}\ \bibnamefont{Avedisian}}}%
+  , \bibinfo {year} {1991},\ \bibfield{title}{%
+  {\selectlanguage {English}\enquote{\bibinfo {title} {On the collision of a
+  droplet with a solid surface},}\ }}%
+  \bibfield{journal}{%
+  \emph{\urlhref{http://www.jstor.org/stable/51903}{\bibinfo {journal}
+  {Proceedings: Mathematical and Physical Sciences}}}\ }%
+  \textbf{\bibinfo {volume} {432}},\ \bibinfo {pages} {pp. 13--41}%
+  \bibAnnoteFile{NoStop}{Chandra1991}%
+\bibitem[{\citenamefont{Crooks}\ \emph{et~al.}(2001)\citenamefont{Crooks},
+  \citenamefont{Cooper-whitez},\ and\ \citenamefont{Boger}}]{Crooks2001}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Crooks}, \bibfnamefont{Regan}}, \bibinfo
+  {author} {\bibfnamefont{Justin}\ \bibnamefont{Cooper-whitez}},\ and\ \bibinfo
+  {author} {\bibfnamefont{David~V}\ \bibnamefont{Boger}}}%
+  , \bibinfo {year} {2001},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{The role of dynamic surface tension and
+  elasticity on the dynamics of drop impact}},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {CHEM ENG SCI}}\ }%
+  \textbf{\bibinfo {volume} {56}},\ \bibinfo {pages} {5575--5592}%
+  \bibAnnoteFile{NoStop}{Crooks2001}%
+\bibitem[{\citenamefont{Fukai}\ \emph{et~al.}(2000)\citenamefont{Fukai},
+  \citenamefont{Etou}, \citenamefont{Asanoma},\ and\
+  \citenamefont{Miyatake}}]{Fukai2000}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Fukai}, \bibfnamefont{Jun}}, \bibinfo
+  {author} {\bibfnamefont{Masaharu}\ \bibnamefont{Etou}}, \bibinfo {author}
+  {\bibfnamefont{Fumio}\ \bibnamefont{Asanoma}},\ and\ \bibinfo {author}
+  {\bibfnamefont{Osamu}\ \bibnamefont{Miyatake}}}%
+  , \bibinfo {year} {2000},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Dynamic contact angles of water droplets sliding
+  on inclined hot surfaces},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1252/jcej.33.177}{\bibinfo {journal} {J CHEM ENG JPN}}}\ }%
+  \textbf{\bibinfo {volume} {33}},\ \bibinfo {pages} {177--179}%
+  \bibAnnoteFile{NoStop}{Fukai2000}%
+\bibitem[{\citenamefont{Gunjal}\ \emph{et~al.}(2005)\citenamefont{Gunjal},
+  \citenamefont{Ranade},\ and\ \citenamefont{Chaudhari}}]{Gunjal2005}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Gunjal}, \bibfnamefont{Prashant~R.}},
+  \bibinfo {author} {\bibfnamefont{Vivek~V.}\ \bibnamefont{Ranade}},\ and\
+  \bibinfo {author} {\bibfnamefont{Raghunath~V.}\ \bibnamefont{Chaudhari}}}%
+  , \bibinfo {year} {2005}\ \bibinfo {month} {Jan.},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Dynamics of drop impact on solid surface:
+  Experiments and VOF simulations}},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1002/aic.10300}{\bibinfo {journal} {AICHE J}}}\ }%
+  \textbf{\bibinfo {volume} {51}},\ \bibinfo {pages} {59--78}%
+  \bibAnnoteFile{NoStop}{Gunjal2005}%
+\bibitem[{\citenamefont{Harlow}\ and\
+  \citenamefont{Shannon}(1967)}]{Harlow1967}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Harlow}, \bibfnamefont{Francis~H}},\ and\
+  \bibinfo {author} {\bibfnamefont{John~P}\ \bibnamefont{Shannon}}}%
+  , \bibinfo {year} {1967},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{The Splash of a Liquid Drop}},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {J APPL PHYS}}\ }%
+  \textbf{\bibinfo {volume} {3855}},\ \doi{\bibinfo {doi} {10.1063/1.1709031}}%
+  \bibAnnoteFile{NoStop}{Harlow1967}%
+\bibitem[{\citenamefont{Hirt}(1981)}]{Hirt1981}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Hirt}, \bibfnamefont{C~W}}}%
+  , \bibinfo {year} {1981},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Volume of Fluid ( VOF ) Method for the Dynamics
+  of Free Boundaries}},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {J COMPUT PHYS}}\ }%
+  \textbf{\bibinfo {volume} {225}},\ \bibinfo {pages} {201--225}%
+  \bibAnnoteFile{NoStop}{Hirt1981}%
+\bibitem[{\citenamefont{Hung}\ \emph{et~al.}(2011)\citenamefont{Hung},
+  \citenamefont{Wang}, \citenamefont{Liao},\ and\
+  \citenamefont{Lin}}]{Hung2011}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Hung}, \bibfnamefont{Yi-Lin}}, \bibinfo
+  {author} {\bibfnamefont{Meng-Jiy}\ \bibnamefont{Wang}}, \bibinfo {author}
+  {\bibfnamefont{Yu-Ching}\ \bibnamefont{Liao}},\ and\ \bibinfo {author}
+  {\bibfnamefont{Shi-Yow}\ \bibnamefont{Lin}}}%
+  , \bibinfo {year} {2011}\ \bibinfo {month} {Jul.},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Initial wetting velocity of droplet impact and
+  spreading: Water on glass and parafilm}},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1016/j.colsurfa.2011.03.061}{\bibinfo {journal} {COLLOIDS
+  SURFACES A}}}\ }%
+  \textbf{\bibinfo {volume} {384}},\ \bibinfo {pages} {172--179}%
+  \bibAnnoteFile{NoStop}{Hung2011}%
+\bibitem[{\citenamefont{Jones}(1971)}]{Jones1971}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Jones}, \bibfnamefont{H}}}%
+  , \bibinfo {year} {1971},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Cooling, freezing and substrate impact of droplets
+  formed by rotary atomization},}\ }%
+  \bibfield{journal}{%
+  \emph{\urlhref{http://stacks.iop.org/0022-3727/4/i=11/a=206}{\bibinfo
+  {journal} {J PHYS D APPL PHYS}}}\ }%
+  \textbf{\bibinfo {volume} {4}},\ \bibinfo {pages} {1657}%
+  \bibAnnoteFile{NoStop}{Jones1971}%
+\bibitem[{\citenamefont{Kang}\ and\ \citenamefont{Lee}(2000)}]{Kang2000}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Kang}, \bibfnamefont{B.~S.}},\ and\ \bibinfo
+  {author} {\bibfnamefont{D.~H.}\ \bibnamefont{Lee}}}%
+  , \bibinfo {year} {2000},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {On the dynamic behavior of a liquid droplet
+  impacting upon an inclined heated surface},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {EXP FLUIDS}}\ }%
+  \textbf{\bibinfo {volume} {29}},\ \bibinfo {pages} {380--387}%
+  \bibAnnoteFile{NoStop}{Kang2000}%
+\bibitem[{\citenamefont{Liu}\ \emph{et~al.}(2015)\citenamefont{Liu},
+  \citenamefont{Tan},\ and\ \citenamefont{Xu}}]{Liu2015}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Liu}, \bibfnamefont{Yuan}}, \bibinfo {author}
+  {\bibfnamefont{Peng}\ \bibnamefont{Tan}},\ and\ \bibinfo {author}
+  {\bibfnamefont{Lei}\ \bibnamefont{Xu}}}%
+  , \bibinfo {year} {2015},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Kelvin-helmholtz instability in an ultrathin air
+  film causes drop splashing on smooth surfaces},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1073/pnas.1417718112}{\bibinfo {journal} {Proceedings of the
+  National Academy of Sciences}}}\ }%
+  \textbf{\bibinfo {volume} {112}},\ \bibinfo {pages} {3280--3284}%
+  \bibAnnoteFile{NoStop}{Liu2015}%
+\bibitem[{\citenamefont{Lunkad}\ \emph{et~al.}(2007)\citenamefont{Lunkad},
+  \citenamefont{Buwa},\ and\ \citenamefont{Nigam}}]{Lunkad2007}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Lunkad}, \bibfnamefont{Siddhartha~F.}},
+  \bibinfo {author} {\bibfnamefont{Vivek~V.}\ \bibnamefont{Buwa}},\ and\
+  \bibinfo {author} {\bibfnamefont{K.D.P.}\ \bibnamefont{Nigam}}}%
+  , \bibinfo {year} {2007}\ \bibinfo {month} {Dec.},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Numerical simulations of drop impact and
+  spreading on horizontal and inclined surfaces}},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1016/j.ces.2007.07.036}{\bibinfo {journal} {CHEM ENG SCI}}}\ }%
+  \textbf{\bibinfo {volume} {62}},\ \bibinfo {pages} {7214--7224}%
+  \bibAnnoteFile{NoStop}{Lunkad2007}%
+\bibitem[{\citenamefont{Madejski}(1976)}]{Madejski1976}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Madejski}, \bibfnamefont{J.}}}%
+  , \bibinfo {year} {1976},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Solidification of droplets on a cold surface},}\
+  }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {INT J HEAT MASS TRAN}}\ }%
+  \textbf{\bibinfo {volume} {19}},\ \bibinfo {pages} {1009 -- 1013}%
+  \bibAnnoteFile{NoStop}{Madejski1976}%
+\bibitem[{\citenamefont{Mao}\ \emph{et~al.}(1997)\citenamefont{Mao},
+  \citenamefont{Kuhn},\ and\ \citenamefont{Tran}}]{Mao1997}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Mao}, \bibfnamefont{Ted}}, \bibinfo {author}
+  {\bibfnamefont{David C~S}\ \bibnamefont{Kuhn}},\ and\ \bibinfo {author}
+  {\bibfnamefont{Honghi}\ \bibnamefont{Tran}}}%
+  , \bibinfo {year} {1997},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Spread and Rebound of Liquid Droplets upon Impact
+  on Flat Surfaces}},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {AICHE J}}\ }%
+  \textbf{\bibinfo {volume} {4}},\ \bibinfo {pages} {2169--2179}%
+  \bibAnnoteFile{NoStop}{Mao1997}%
+\bibitem[{\citenamefont{Mariotte}\ and\
+  \citenamefont{de~La~Hire}(1700)}]{Mariotte1700}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Mariotte}, \bibfnamefont{E.}},\ and\ \bibinfo
+  {author} {\bibfnamefont{P.}~\bibnamefont{de~La~Hire}}}%
+  , \bibinfo {year} {1700},\
+  \urlhref{https://books.google.ca/books?id=HDUDAAAAQAAJ}{\emph{\bibinfo
+  {title} {Trait{\'e} du mouvement des eaux et des autres corps fluides, mis en
+  lumiere par les soins de m. de La Hire}}}\ (\bibinfo {publisher} {Nabu
+  Press})%
+  \bibAnnoteFile{NoStop}{Mariotte1700}%
+\bibitem[{\citenamefont{Pasandideh‐Fard}\
+  \emph{et~al.}(1996)\citenamefont{Pasandideh‐Fard}, \citenamefont{Qiao},
+  \citenamefont{Chandra},\ and\ \citenamefont{Mostaghimi}}]{Pasandideh1996}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Pasandideh‐Fard}, \bibfnamefont{M.}},
+  \bibinfo {author} {\bibfnamefont{Y.~M.}\ \bibnamefont{Qiao}}, \bibinfo
+  {author} {\bibfnamefont{S.}~\bibnamefont{Chandra}},\ and\ \bibinfo {author}
+  {\bibfnamefont{J.}~\bibnamefont{Mostaghimi}}}%
+  , \bibinfo {year} {1996},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Capillary effects during droplet impact on a solid
+  surface},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {PHYS FLUIDS}}\ }%
+  \textbf{\bibinfo {volume} {8}},\ \bibinfo {pages} {650--659}%
+  \bibAnnoteFile{NoStop}{Pasandideh1996}%
+\bibitem[{\citenamefont{Pilliod}\ and\
+  \citenamefont{Puckett}(2004)}]{Pilliod2004}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Pilliod}, \bibfnamefont{James~Edward}},\ and\
+  \bibinfo {author} {\bibfnamefont{Elbridge~Gerry}\ \bibnamefont{Puckett}}}%
+  , \bibinfo {year} {2004}\ \bibinfo {month} {Sep.},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Second-order accurate volume-of-fluid algorithms
+  for tracking material interfaces}},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1016/j.jcp.2003.12.023}{\bibinfo {journal} {Journal of
+  Computational Physics}}}\ }%
+  \textbf{\bibinfo {volume} {199}},\ \bibinfo {pages} {465--502}%
+  \bibAnnoteFile{NoStop}{Pilliod2004}%
+\bibitem[{\citenamefont{Popinet}(2003)}]{Popinet2003}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Popinet}, \bibfnamefont{St\'{e}phane}}}%
+  , \bibinfo {year} {2003}\ \bibinfo {month} {Sep.},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Gerris: a tree-based adaptive solver for the
+  incompressible Euler equations in complex geometries}},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1016/S0021-9991(03)00298-5}{\bibinfo {journal} {J COMPUT
+  PHYS}}}\ }%
+  \textbf{\bibinfo {volume} {190}},\ \bibinfo {pages} {572--600}%
+  \bibAnnoteFile{NoStop}{Popinet2003}%
+\bibitem[{\citenamefont{Rein}(2002)}]{Rein2002}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Rein}, \bibfnamefont{M.}}}%
+  , \bibinfo {year} {2002},\
+  \urlhref{http://books.google.ca/books?id=qecltbmIbC4C}{\emph{\bibinfo {title}
+  {Drop-Surface Interactions}}},\ CISM International Centre for Mechanical
+  Sciences Series\ (\bibinfo {publisher} {Springer})\ ISBN \bibinfo {isbn}
+  {9783211836927}%
+  \bibAnnoteFile{NoStop}{Rein2002}%
+\bibitem[{\citenamefont{Richard}(2000)}]{Richard2000}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Richard}, \bibfnamefont{D}}}%
+  , \bibinfo {year} {2000},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Bouncing water drops ´}},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {EUROPHYS LETT}}\ }%
+  \textbf{\bibinfo {volume} {50}},\ \bibinfo {pages} {769--775}%
+  \bibAnnoteFile{NoStop}{Richard2000}%
+\bibitem[{\citenamefont{Richard}\ \emph{et~al.}(2002)\citenamefont{Richard},
+  \citenamefont{Clanet},\ and\ \citenamefont{Qu\'{e}r\'{e}}}]{Richard2002}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Richard}, \bibfnamefont{Denis}}, \bibinfo
+  {author} {\bibfnamefont{Christophe}\ \bibnamefont{Clanet}},\ and\ \bibinfo
+  {author} {\bibfnamefont{David}\ \bibnamefont{Qu\'{e}r\'{e}}}}%
+  , \bibinfo {year} {2002},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{Contact time of a bouncing drop}},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {NATURE}}\ }%
+  \textbf{\bibinfo {volume} {1334}},\ \bibinfo {pages} {0--1}%
+  \bibAnnoteFile{NoStop}{Richard2002}%
+\bibitem[{\citenamefont{Rioboo}\ \emph{et~al.}(2001)\citenamefont{Rioboo},
+  \citenamefont{Tropea},\ and\ \citenamefont{Marengo}}]{Rioboo2001}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Rioboo}, \bibfnamefont{Romain}}, \bibinfo
+  {author} {\bibfnamefont{Cameron}\ \bibnamefont{Tropea}},\ and\ \bibinfo
+  {author} {\bibfnamefont{Marco}\ \bibnamefont{Marengo}}}%
+  , \bibinfo {year} {2001},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Outcomes from a drop impact on solid surfaces},}\
+  }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {ATOMIZATION SPRAY}}\ }%
+  \textbf{\bibinfo {volume} {11}}%
+  \bibAnnoteFile{NoStop}{Rioboo2001}%
+\bibitem[{\citenamefont{Roux}\ and\
+  \citenamefont{Cooper-White}(2004)}]{Roux2004}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Roux}, \bibfnamefont{D.C.D.}},\ and\ \bibinfo
+  {author} {\bibfnamefont{J.J.}\ \bibnamefont{Cooper-White}}}%
+  , \bibinfo {year} {2004},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Dynamics of water spreading on a glass surface},}\
+  }%
+  \bibfield{journal}{%
+  \emph{\Doi{http://dx.doi.org/10.1016/j.jcis.2004.05.007}{\bibinfo {journal}
+  {J COLLOID INTERF SCI}}}\ }%
+  \textbf{\bibinfo {volume} {277}},\ \bibinfo {pages} {424 -- 436}%
+  \bibAnnoteFile{NoStop}{Roux2004}%
+\bibitem[{\citenamefont{Scheller}\ and\
+  \citenamefont{Bousfield}(1995)}]{Scheller1995}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Scheller}, \bibfnamefont{Brian~L.}},\ and\
+  \bibinfo {author} {\bibfnamefont{Douglas~W.}\ \bibnamefont{Bousfield}}}%
+  , \bibinfo {year} {1995},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Newtonian drop impact with a solid surface},}\ }%
+  \bibfield{journal}{%
+  \emph{\Doi{10.1002/aic.690410602}{\bibinfo {journal} {AICHE J}}}\ }%
+  \textbf{\bibinfo {volume} {41}},\ \bibinfo {pages} {1357--1367}%
+  \bibAnnoteFile{NoStop}{Scheller1995}%
+\bibitem[{\citenamefont{Sikalo}\ \emph{et~al.}(2005)\citenamefont{Sikalo},
+  \citenamefont{Tropea},\ and\ \citenamefont{Ganić}}]{Sikalo2005}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Sikalo}, \bibfnamefont{S.}}, \bibinfo
+  {author} {\bibfnamefont{C.}~\bibnamefont{Tropea}},\ and\ \bibinfo {author}
+  {\bibfnamefont{E.N.}\ \bibnamefont{Ganić}}}%
+  , \bibinfo {year} {2005},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {Impact of droplets onto inclined surfaces},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {J COLLOID INTERF SCI}}\ }%
+  \textbf{\bibinfo {volume} {286}},\ \bibinfo {pages} {661 -- 669}%
+  \bibAnnoteFile{NoStop}{Sikalo2005}%
+\bibitem[{\citenamefont{Taylor}\ and\
+  \citenamefont{Acrivos}(1963)}]{Taylor1963}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Taylor}, \bibfnamefont{T.D.}},\ and\ \bibinfo
+  {author} {\bibfnamefont{Andreas}\ \bibnamefont{Acrivos}}}%
+  , \bibinfo {year} {1963},\ \bibfield{title}{%
+  \enquote{\bibinfo {title} {{On the deformation and drag of a falling viscous
+  drop at low Reynolds number}},}\ }%
+  \bibfield{journal}{%
+  \emph{\bibinfo {journal} {J FLUID MECH}}\ }%
+  \textbf{\bibinfo {volume} {18}},\ \bibinfo {pages} {466--476}%
+  \bibAnnoteFile{NoStop}{Taylor1963}%
+\bibitem[{\citenamefont{Worthington}(1908)}]{Worthington1908}%
+  \BibitemOpen
+  \bibfield{author}{%
+  \bibinfo {author} {\bibnamefont{Worthington}, \bibfnamefont{A.M.}}}%
+  , \bibinfo {year} {1908},\ \emph{\bibinfo {title} {A Study of Splashes}}\
+  (\bibinfo {publisher} {Longmans, Green, and Company})%
+  \bibAnnoteFile{NoStop}{Worthington1908}%
+\end{thebibliography}%

@@ -1,0 +1,618 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{images/}}
+
+% Title Page
+\title{Navier Stokes Solver for two phas flow}
+\author{Palas Kumar farsoiya}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+\section{Governing Equations}
+As we adopt continuum hypothesis, we then apply conservation principles to obtain governing equations for 
+the fluid flow. These are conservation of mass, momentum and energy. Newton's laws of classical mechanics
+are consequence of momentum conservation. 
+
+\section{Mass conservation}
+Consider a material volume element in Fig <>.  A material volume is a whose shape at $t=0$, is arbitrary,
+and has fixed set of material points. And therefore, moves with the local continuum velocity of the fluid 
+at every point.
+%It needs the density inside the volume element 
+%to change with time in such a way that any imbalance in mass flux in and out of the control volume is compensated by an accumulation of
+%mass inside.
+Conservation of mass states that mass is neither created nor destroyed. It implies that the mass inside the material volume is constant with respect
+to time. Mathematically,
+\begin{equation}
+ \frac{D}{Dt}\left[\int_{V_m(t)}{\rho dV}\right] = 0 
+\end{equation}
+
+where,
+\begin{equation}
+ \frac{DB}{Dt} = \frac{\partial B}{\partial t}+u.\nabla B
+\end{equation}
+Using the Reynolds transport theorem, which says
+
+\begin{equation}
+ \frac{D}{Dt}\left[\int_{V_m(t)}{}{B(x,t)}dV\right] = \int_{V_m(t)}{}{\left[\frac{\partial B}{\partial t} + \nabla . (Bu)\right] dV}
+\end{equation}
+
+(1), can be written as, 
+\begin{equation}
+ \int_{V_m(t)}{}{\left[\frac{\partial \rho}{\partial t} + \nabla . (\rho u)\right] dV} = 0
+\end{equation}
+
+where the choice of $V_m(t)$ is arbitrary, hence the integrand itself must be zero.
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + \nabla . (\rho u) = 0
+\end{equation}
+
+For, incompressible fluids where density does not changes with time, (5) reduces to,
+\begin{equation}
+ \nabla .u = 0
+\end{equation}
+
+\section{Momentum Conservation}
+Newton's second law states that,
+
+\begin{equation}
+ \text{rate of change of linear momentum in an inertial frame} = \text{the sum of forces acting on body}
+\end{equation}
+
+When we apply the above on the material volume of the fluid, we get
+\begin{equation}
+ \frac{D}{Dt}\int_{V_m(t)} (\rho u) d V = \text{ sum of the forces acting on } V_m(t)
+\end{equation}
+
+From the continuum prospective, the forces which act on the control volume can be of two types. Body force and surface force. The body force
+which is common to most of the problems is gravitational force, which acts equally on all the volume elements. The surface forces are forces
+which act from outside the control volume to fluid inside or vice-versa. 
+
+RHS of (8), can be expressed as sum of these two forces,
+\begin{equation}
+ \frac{D}{Dt}\int_{V_m(t)} (\rho u) d V = \int_{V_m(t)}{\rho g dV} + \int_{A_m(t)}{tdA}
+\end{equation}
+
+where, g is acceleration due to gravity, $A_m(t)$ is the closed surface area of the control volume element and $t$ is the \textbf{stress vector}.
+using (3), we can write the RHS of (9) as,
+
+\begin{equation}
+ \int_{V_m(t)}{}{\left[\frac{\partial (\rho u)}{\partial t} + \nabla . (\rho uu)\right] dV} =  \int_{V_m(t)}{\rho g dV} + \int_{A_m(t)}{tdA}
+\end{equation}
+
+In the above equation stress vector, $t$ can be found by linear vector operation on unit normal to the surface at any given point. The linear vector operator
+is \textbf{T}, is called as stress tensor, which is a second order tensor. Hence, 
+
+\begin{equation}
+ t = n . \textbf{T} 
+\end{equation}
+on applying Guass divergence theorem,
+\begin{equation}
+ \int_{A_m(t)}{n . \textbf{T}}  = \int_{V_m(t)}{\nabla . \textbf{T}}
+\end{equation}
+and then substitute the above in (10), we get
+\begin{equation}
+ \int_{V_m(t)}{}{\left[\frac{\partial (\rho u)}{\partial t} + \nabla . (\rho uu)\right] dV} =  \int_{V_m(t)}{\rho g dV} + \int_{V_m(t)}{\nabla . \textbf{T}}
+\end{equation}
+
+After rearrangement, 
+\begin{equation}
+ \int_{V_m(t)}{\left[\frac{\partial (\rho u)}{\partial t} + \nabla . (\rho uu)  -  \rho g  - \nabla . \textbf{T}\right]dV} = 0
+\end{equation}
+
+Again, the $V_m(t)$, is an arbitrary control volume, and integrand must be then zero to follow the above equation.
+
+\begin{equation}
+ \frac{\partial (\rho u)}{\partial t} + \nabla . (\rho uu)  =  \rho g  + \nabla . \textbf{T} 
+\end{equation}
+
+The stress tensor \textbf{T} can be expressed in terms of isotropic and non-isotropic parts,
+
+\begin{equation}
+ \textbf{T} = -p\textbf{I}+\tau 
+\end{equation}
+Substitute the above form in (15), we get
+
+\begin{equation}
+ \frac{\partial (\rho u)}{\partial t} + \nabla . (\rho uu)  = \nabla .( -p\textbf{I}+\tau) + \rho g  
+\end{equation}
+Now, constitutive equation for Newtonian fluid is,
+\begin{equation}
+ \tau = 2\mu D
+\end{equation}
+where, $D$ is the rate of strain tensor, the symmetric part of $\nabla u$. Now,
+\begin{equation}
+ \tau = \mu (\nabla u + (\nabla u)^T)
+\end{equation}
+
+Substituting above in (17), we get
+\begin{equation}
+ \frac{\partial (\rho u)}{\partial t} + \nabla . (\rho uu)  =  -\nabla p+ \nabla .(\mu (\nabla u + (\nabla u)^T)) + \rho g  
+\end{equation}
+Subtracting (5) from (20), we get
+\begin{equation}
+ \frac{\partial u}{\partial t} + (u.\nabla)u  =  -\frac{\nabla p}{\rho}+ \frac{1}{\rho}\nabla .(\mu (\nabla u + (\nabla u)^T)) +  g   
+\end{equation}
+Rewriting (21), in conservative form,
+\begin{equation}
+ \frac{\partial u}{\partial t} + \nabla .(uu)  =  -\frac{\nabla p}{\rho}+ \frac{1}{\rho}\nabla .(\mu (\nabla u + (\nabla u)^T)) +  g  
+\end{equation}
+
+\subsection{Non-Dimensionalisation of governing equation}
+
+Substitute $u = U\tilde u $, $x = L\tilde x $, $y = L\tilde y $, $t = \frac{L}{U}\tilde t $, $p = \rho_L U^2\tilde p $, $\rho = \rho_L \rho_r $, $\mu = \mu_L \mu_r $
+in (22),
+
+\begin{equation}
+ \frac{U^2}{L}\left[\frac{\partial \tilde u}{\partial \tilde t} + \tilde\nabla .(\tilde u \tilde u)\right]  = -\frac{\rho_L}{\rho_L \rho_r}\frac{U^2}{L}\tilde\nabla \tilde p
+ + \frac{U^2}{L^2\rho_L \rho_r}\tilde \nabla .(\mu_L \mu_r (\tilde\nabla \tilde u + (\tilde\nabla \tilde u)^T)) +  g 
+\end{equation}
+
+Rearranging (23),
+
+\begin{equation}
+ \left[\frac{\partial \tilde u}{\partial \tilde t} + \tilde\nabla .(\tilde u \tilde u)\right]  = -\frac{1}{\rho_r}\tilde\nabla \tilde p
+ + \frac{\mu_L}{L\rho_L U}\frac{1}{\rho_r}\tilde \nabla .(\mu_r (\tilde\nabla \tilde u + (\tilde\nabla \tilde u)^T)) +  \frac{gL}{U^2} 
+\end{equation}
+
+Now, I will drop tilde from the quantities, further they are assumed to be dimensionless.
+\begin{equation}
+ \frac{\partial  u}{\partial  t} + \nabla .( u  u)  = -\frac{1}{\rho_r}\nabla  p
+ + \frac{1}{Re_L}\frac{1}{\rho_r} \nabla .(\mu_r (\nabla  u + (\nabla  u)^T)) +  \frac{1}{Fr^2} 
+\end{equation}
+
+where, $Re_L = \frac{L\rho_L U}{\mu_L}$ and $Fr = \frac{U}{\sqrt{gL}}$. 
+
+(25) is the non-dimensional form for incompressible multiphase newtonian flow.
+
+\subsection{Integral form of conservation equation}
+As the conservation equations are valid for a differential element, we can also integrate them over a control volume. Its one step before the finite volume discretisation
+approach.
+
+(25) can be integrated on a control volume, V 
+\begin{equation}
+\int_V\left[ \frac{\partial  u}{\partial  t} + \nabla .( u  u)\right]dV  = \int_V\left[-\frac{1}{\rho_r}\nabla  p
+ + \frac{1}{Re_L}\frac{1}{\rho_r} \nabla .(\mu_r (\nabla  u + (\nabla  u)^T)) +  \frac{1}{Fr^2}\right]dV 
+\end{equation}
+
+\begin{equation}
+\int_V \frac{\partial  u}{\partial  t}dV +\int_V \nabla .( u  u)dV  = -\int_V\frac{1}{\rho_r}\nabla  p dV
+ + \frac{1}{Re_L}\frac{1}{\rho_r} \int_V\nabla .(\mu_r (\nabla  u + (\nabla  u)^T))dV +  \frac{1}{Fr^2}\int_V dV 
+\end{equation}
+Applying Guass divergence theorem on advection and diffusion intergrals, we get
+\begin{equation}
+\int_V \frac{\partial  u}{\partial  t}dV +\int_S u(u.n)dS  = -\int_V\frac{1}{\rho_r}\nabla  p dV
+ + \frac{1}{Re_L}\frac{1}{\rho_r} \int_S (\mu_r (\nabla  u + (\nabla  u)^T).n)dS +  \frac{1}{Fr^2}\int_VdV 
+\end{equation}
+
+Now, we can average the indivitual quantities over the control volume, V
+\begin{eqnarray}
+\frac{1}{V}\int_V \frac{\partial  u}{\partial  t}dV +\frac{1}{V}\int_S u(u.n)dS  = -\frac{1}{V}\int_V\frac{1}{\rho_r}\nabla  p dV 
+ + \frac{1}{Re_L}\frac{1}{\rho_r} \frac{1}{V}\int_S (\mu_r (\nabla  u + (\nabla  u)^T).n)dS\\
+ +  \frac{1}{Fr^2}\frac{1}{V}\int_VdV 
+\end{eqnarray}
+
+\section{Discretisation of governing equations}
+\subsection{Grid}
+Before discretisation, we first specify our domain, grid shape and approach. The grid is rectangular and uniform grid spacing has been used for both x and y directions.
+Figure 2 and 3 shows the grid and location of pressure and velocity nodes.
+ \begin{figure}
+  \includegraphics[scale=0.5]{symbols.eps}
+  \caption{Symbols used in marking the nodes}
+ \end{figure}
+
+ \begin{figure}
+  \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{domain.eps}
+ \caption{Actual Domain and Ghost cells}
+ \end{subfigure}
+ \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{pressure.pdf}
+ \caption{Location of pressure nodes}
+ \end{subfigure}
+ \caption{Domain and pressure nodes}
+ \end{figure}
+ 
+ \begin{figure}
+ \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{xvel.pdf}
+ \caption{Location of x-velocities nodes}
+ \end{subfigure}
+  \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{yvel.pdf}
+ \caption{Location of y-velocities nodes}
+ \end{subfigure}
+ \caption{Location of different velocities nodes in domain}
+\end{figure}
+
+Staggered grid approach is used to avoid pressure-velocity decoupling. Use of colocated grids can lead to checkerboard patterns in the solutions. There are three different grids for
+x-velocity (u),y- velocity(v) and pressure (p).  
+The momentum equation are discretised using finite volume approach using the conservative form of equations. This would first order in time and a predictor-corrector approach to 
+compute velocity field in the domain.
+
+\subsection{Integration in time}
+First step is  to compute projected velocity, ignoring the pressure terms, 
+\begin{equation}
+ \frac{u^*-u^n}{\Delta t} =  -A^n + D^n + B^n
+\end{equation}
+
+where $A = \frac{1}{V}\int_S u(u.n)dS$ ,\\ \\ $D =\frac{1}{V}\frac{1}{Re_L}\frac{1}{\rho_r} \frac{1}{V}\int_S (\mu_r (\nabla  u + (\nabla  u)^T).n)dS $ and \\ \\
+$B = \frac{1}{Fr^2}\frac{1}{V}\int_VdV  $
+And then adding the pressure component in the projected velocity 
+
+\begin{equation}
+ \frac{u^{n+1}-u^*}{\Delta t} = -\frac{1}{V}\int_V\frac{1}{\rho_r}\nabla  p dV
+\end{equation}
+
+Rearranging,
+\begin{equation}
+ u^{n+1} = u^*-\frac{\Delta t}{V}\int_V\frac{1}{\rho_r}\nabla  p dV
+\end{equation}
+
+\subsection{Boundary conditions for velocity}
+Boundary conditions are directly imposed by setting the values of velocity on the boundary and ghost control volumes. The problem comes when the variable is not defined where
+we want to set boundary conditions. Hence, therefore the use of ghost control volumes arises. 
+
+\begin{figure}
+ \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{xvel_calc.pdf}
+ \caption{Staggered grid for calculation of x-velocities}
+ \end{subfigure}
+ \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{yvel_calc.pdf}
+ \caption{Staggered grid for calculation of y-velocities}
+ \end{subfigure}
+\end{figure}
+
+\subsubsection{Dirichlet Boundary Conditions}
+The most commonly used boundary condition is the no-slip on the boundaries, we can set the velocity variables on the boundary to zero or any other value. On the left boundary of the 
+domain, the x-velocities are defined we can set them zero directly, but to set y-velocities we set the ghost control volumes y-velocities to change so that the average of ghost and 
+the boundary control volume value becomes zero which is at the wall. This has to implemented inside the time loop, and ghost value has to be updated at every time step 
+
+\begin{eqnarray*}
+ v_{wall} &=& \frac{v_{r,0}+v_{r,1}}{2} \\
+ v_{r,0}&=& 2v_{wall}-v_{r,1}
+\end{eqnarray*}
+
+The similar operation is used for x-velocities at bottom and top boundaries.
+
+\subsubsection{Neumann Boundary Conditions}
+Neumann boundary conditions are used most of the time for symmetry conditions. Zero normal derivative for tangential component of velocity on the wall, and zero normal component of
+velocity on the wall. This is equivalent to free slip, impermeable boundary. Mathematically, for left wall
+
+\begin{eqnarray*}
+ \frac{\partial v}{\partial x} = 0 \qquad\text{Neumann} \\
+ u_{wall} = 0	\qquad\text{Dirichlet}\\
+\end{eqnarray*}
+To implement the above Neumann condition, on say left wall, we should set below inside the time loop
+
+\begin{eqnarray*}
+ v_{r,0}&=& v_{r,1}
+\end{eqnarray*}
+
+\subsection{Discretisation of advection terms}
+To evaluate the advection terms, integrate it over the surface of the control volume. It is actually the sum of in and out fluxes through the faces of control volume. 
+Here an approximation is made by assuming a uniform velocity on the faces of control volume and the fluxes are thus calculated by the value at the center of the boundary. 
+Centered differencing scheme has been used to approximate the values of velocities at the face centers.
+
+\begin{eqnarray}
+ (A_x)_{net} &=& \frac{1}{V}\int_S u(u.n)dS \\
+	 &=& \frac{1}{\Delta x \Delta y}\left[\int_{right} u(u.n)dr - \int_{left} u(u.n)dl + \int_{top} u(u.n)dt - \int_{bottom} u(u.n)db\right] 
+	 \end{eqnarray}
+\begin{eqnarray*}
+\int_{right} u(u.n)dr &=& \left[\left(\frac{u_{r,c+1}+u_{r,c}}{2}\right)^2\right]\Delta y \\
+\int_{left} u(u.n)dl &=& \left[\left(\frac{u_{r,c}+u_{r,c-1}}{2}\right)^2\right]\Delta y \\
+\int_{top} u(u.n)dt &=& \left[\left(\frac{v_{r+1,c}+v_{r+1,c-1}}{2}\right)\left(\frac{u_{r+1,c}+u_{r,c}}{2}\right)\right]\Delta x \\
+\int_{top} u(u.n)dt &=& \left[\left(\frac{v_{r,c}+v_{r,c-1}}{2}\right)\left(\frac{u_{r,c}+u_{r-1,c}}{2}\right)\right]\Delta x \\
+\end{eqnarray*}
+Now, $(A_x)_{net}$ is now given by,
+ \begin{eqnarray*}
+ (A_x)_{net} =  \frac{1}{\Delta x}\left[\left(\frac{u_{r,c+1}+u_{r,c}}{2}\right)^2-\left(\frac{u_{r,c}+u_{r,c-1}}{2}\right)^2\right] \\
+ + \frac{1}{\Delta y}\left[\left(\frac{v_{r+1,c}+v_{r+1,c-1}}{2}\right)\left(\frac{u_{r+1,c}+u_{r,c}}{2}\right) 
+ -\left(\frac{v_{r,c}+v_{r,c-1}}{2}\right)\left(\frac{u_{r,c}+u_{r-1,c}}{2}\right)\right]
+ \end{eqnarray*}
+Similarily, $(A_y)_{net}$ is,
+  \begin{eqnarray*}
+ (A_y)_{net} =   \frac{1}{\Delta x}\left[\left(\frac{v_{r,c+1}+v_{r,c}}{2}\right)\left(\frac{u_{r,c+1}+u_{r-1,c+1}}{2}\right) 
+ -\left(\frac{v_{r,c}+v_{r,c-1}}{2}\right)\left(\frac{u_{r,c}+u_{r-1,c}}{2}\right)\right] \\
+ +\frac{1}{\Delta y}\left[\left(\frac{v_{r,c+1}+v_{r,c}}{2}\right)^2-\left(\frac{v_{r,c}+v_{r,c-1}}{2}\right)^2\right]
+ \end{eqnarray*}
+ 
+ \subsection{Diffusion terms}
+ Before looking at the discretised form of diffusion terms, we shall derive the components for x and y directions.
+ 
+\subsubsection{Components of Diffusion term}
+Gradient of velocity for 2D flow, 
+\begin{equation}
+ \nabla u =  \begin{bmatrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}  \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+ \nabla u + (\nabla u)^T=  \begin{bmatrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}  \end{bmatrix}
+ + \begin{bmatrix} \frac{\partial u}{\partial x} & \frac{\partial v}{\partial x} \\ \frac{\partial u}{\partial y} & \frac{\partial v}{\partial y}  \end{bmatrix}
+\end{equation}
+\begin{equation}
+ \nabla u + (\nabla u)^T=  \begin{bmatrix} 2\frac{\partial u}{\partial x} & \left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) \\ 
+ \left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) & 2\frac{\partial v}{\partial y}  \end{bmatrix}
+\end{equation}
+\begin{equation}
+ (\mu_r (\nabla  u + (\nabla  u)^T)) = \begin{bmatrix} 2\mu_r\frac{\partial u}{\partial x} & \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) \\ 
+ \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) & 2\mu_r\frac{\partial v}{\partial y}  \end{bmatrix}
+\end{equation}
+
+% Now, taking divergence of the above tensor,
+% 
+% \begin{equation}
+%  \nabla .(\mu_r (\nabla  u + (\nabla  u)^T)) = \begin{bmatrix}\frac{\partial}{\partial x} & \frac{\partial}{\partial y} \end {bmatrix}
+%  \begin{bmatrix} 2\mu_r\frac{\partial u}{\partial x} & \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) \\ 
+%  \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) & 2\mu_r\frac{\partial v}{\partial y}  \end{bmatrix}
+% \end{equation}
+% we get,
+% \begin{equation}
+%  \nabla .(\mu_r (\nabla  u + (\nabla  u)^T)) \\
+%  \\
+%  = \begin{bmatrix}\frac{\partial}{\partial x}\left(2\mu_r\frac{\partial u}{\partial x}\right) 
+%  + \frac{\partial}{\partial y}\left(\mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)\right) \\
+%  \frac{\partial}{\partial x}\left(\mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)\right) 
+%  + \frac{\partial}{\partial y}\left(2\mu_r\frac{\partial v}{\partial y}\right)
+%  \end {bmatrix}
+% \end{equation}
+\begin{eqnarray}
+ (\mu_r (\nabla  u + (\nabla  u)^T))_x = \begin{bmatrix} 2\mu_r\frac{\partial u}{\partial x} & \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) \\ 
+ \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) & 2\mu_r\frac{\partial v}{\partial y}  \end{bmatrix}
+ .\begin{bmatrix}1 \\0 \end{bmatrix} \\
+ = 2\mu_r\frac{\partial u}{\partial x} + \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)
+\end{eqnarray}
+\begin{eqnarray}
+ (\mu_r (\nabla  u + (\nabla  u)^T))_y = \begin{bmatrix} 2\mu_r\frac{\partial u}{\partial x} & \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) \\ 
+ \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) & 2\mu_r\frac{\partial v}{\partial y}  \end{bmatrix}
+ .\begin{bmatrix}0 \\1 \end{bmatrix} \\
+ = \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)+2\mu_r\frac{\partial v}{\partial y}
+\end{eqnarray}
+ Diffusion terms are integrated on the surface of control volume, 
+ \begin{eqnarray}
+  (D_x)_{net} &=& \frac{1}{V}\int_S 2\mu_r\frac{\partial u}{\partial x} + \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right).\hat n dS
+ \end{eqnarray}
+\begin{eqnarray*}
+= \frac{1}{\Delta x \Delta y}\left[\int_{right} 2\mu_r\frac{\partial u}{\partial x} + \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) dr \right. \\
+- \int_{left} 2\mu_r\frac{\partial u}{\partial x} + \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) dl \\
++ \int_{top} 2\mu_r\frac{\partial u}{\partial x} + \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) dt \\
+\left.-\int_{bottom} 2\mu_r\frac{\partial u}{\partial x} + \mu_r\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) db \right]
+\end{eqnarray*}
+\subsubsection{Discretisation}
+Integrands in above equations are constant over the faces of control volume, and derivatives are approximated through centeral differencing,
+\begin{eqnarray*}
+(D_x)_{right} = \frac{2}{\Delta x}\left[\mu_{r,c}\left(\frac{u_{r,c+1}-u_{r,c}}{\Delta x}\right)\right]\\
+(D_x)_{left} = \frac{2}{\Delta x}\left[\mu_{r,c-1}\left(\frac{u_{r,c}-u_{r,c-1}}{\Delta x}\right)\right]\\
+(D_x)_{top} = \frac{\mu_{top}}{\Delta y}\left[\frac{u_{r+1,c}-u_{r,c}}{\Delta y}+\frac{v_{r+1,c}-v_{r+1,c-1}}{\Delta x}\right]\\
+(D_x)_{bottom} = \frac{\mu_{bottom}}{\Delta y}\left[\frac{u_{r,c}-u_{r-1,c}}{\Delta y}+\frac{v_{r,c}-v_{r,c-1}}{\Delta x}\right]
+\end{eqnarray*}
+ where, \\
+ $\mu_{top}= \frac{1}{4}[\mu_{r+1,c}+\mu_{r+1,c-1}+\mu_{r,c-1}+\mu_{r,c}]$ \\
+  $\mu_{bottom}= \frac{1}{4}[\mu_{r,c}+\mu_{r,c-1}+\mu_{r-1,c-1}+\mu_{r-1,c}]$ \\
+  \section{Pressure Poisson Equation(PPE)}
+  For incompressible fluids, it can be followed from (6) that,
+  \begin{equation}
+ \nabla .u^{n+1} = 0
+\end{equation}
+  \begin{equation}
+ \frac{u_{r,c+1}^{n+1}-u_{r,c}^{n+1}}{\Delta x} + \frac{v_{r+1,c}^{n+1}-v_{r,c}^{n+1}}{\Delta y} = 0
+\end{equation}
+It essentially states that, any solution of velocity field should comply mass conservation, and the velocity field thus obtained must be divergence free. 
+substituting (33) in (46), we get
+
+\begin{eqnarray*}
+ \frac{1}{\Delta x}\left[u_{r,c+1}^*-\frac{2\Delta t }{(\rho_{r,c}+\rho_{r,c+1})}\left(\frac{p_{r,c+1}-p_{r,c}}{\Delta x}\right) \right.	\\
+- \left. u_{r,c}^*+\frac{2\Delta t }{(\rho_{r,c}+\rho_{r,c-1})}\left(\frac{p_{r,c}-p_{r,c-1}}{\Delta x}\right)\right]	\\
++\frac{1}{\Delta y}\left[v_{r+1,c}^*-\frac{2\Delta t }{(\rho_{r+1,c}+\rho_{r,c})}\left(\frac{p_{r+1,c}-p_{r,c}}{\Delta y}\right) \right.	\\
+-\left. v_{r,c}^*+\frac{2\Delta t }{(\rho_{r,c}+\rho_{r-1,c})}\left(\frac{p_{r,c}-p_{r-1,c}}{\Delta y}\right)\right]	=0
+\end{eqnarray*}
+taking out $p_{r,c}$ on LHS, we get
+ \begin{eqnarray*}
+p_{r,c} = \left[\frac{1}{(\Delta x)^2}\left(\frac{1}{\rho_{r,c+1}+\rho_{r,c}}+\frac{1}{\rho_{r,c}+\rho_{r,c-1}}\right)
++\frac{1}{(\Delta y)^2}\left(\frac{1}{\rho_{r+1,c}+\rho_{r,c}}+\frac{1}{\rho_{r,c}+\rho_{r-1,c}}\right)\right]^{-1} \\
+\left\{\frac{1}{(\Delta x)^2}\left(\frac{p_{r,c+1}}{\rho_{r,c+1}+\rho_{r,c}}+\frac{p_{r,c-1}}{\rho_{r,c}+\rho_{r,c-1}}\right)\right.
+\left.+\frac{1}{(\Delta y)^2}\left(\frac{p_{r+1,c}}{\rho_{r+1,c}+\rho_{r,c}}+\frac{p_{r-1,c}}{\rho_{r,c}+\rho_{r-1,c}}\right)\right. \\
+-\frac{1}{2\Delta t}\left. \left(\frac{u_{r,c+1}^*-u_{r,c}^*}{\Delta x} +\frac{u_{r,c+1}^*-u_{r,c}^*}{\Delta x}\right)\right\}
+ \end{eqnarray*}
+ \begin{figure}
+  \includegraphics[scale=0.4]{pressure_calc.pdf}
+  \caption{Grid for calculation of pressure}
+ \end{figure}
+
+\subsection{Successive Over Relaxation method (SOR)}
+Successive over relaxation method is used to speed up convergence while solving linear algebric equations for PPE,
+\begin{eqnarray*}
+ p_{r,c}^{\alpha+1} = \omega \left[\frac{1}{(\Delta x)^2}\left(\frac{1}{\rho_{r,c+1}+\rho_{r,c}}+\frac{1}{\rho_{r,c}+\rho_{r,c-1}}\right)
++\frac{1}{(\Delta y)^2}\left(\frac{1}{\rho_{r+1,c}+\rho_{r,c}}+\frac{1}{\rho_{r,c}+\rho_{r-1,c}}\right)\right]^{-1} \\
+\left\{\frac{1}{(\Delta x)^2}\left(\frac{p_{r,c+1}}{\rho_{r,c+1}+\rho_{r,c}}+\frac{p_{r,c-1}}{\rho_{r,c}+\rho_{r,c-1}}\right)\right.
+\left.+\frac{1}{(\Delta y)^2}\left(\frac{p_{r+1,c}}{\rho_{r+1,c}+\rho_{r,c}}+\frac{p_{r-1,c}}{\rho_{r,c}+\rho_{r-1,c}}\right)\right. \\
+-\frac{1}{2\Delta t}\left. \left(\frac{u_{r,c+1}^*-u_{r,c}^*}{\Delta x} +\frac{u_{r,c+1}^*-u_{r,c}^*}{\Delta x}\right)\right\}\\
++(1-\omega)p_{r,c}^{\alpha}
+\end{eqnarray*}
+where $\alpha$ is the previous iteration step and $\omega$ is the relaxation parameter, which can take values from 0-2, for overrelaxation it must be greater than 1.
+For stability reasons it must be below 2. $\omega= 1.2 -1.5$ is usually a good compromise between stability and convergence. The advantage to use SOR is its simplicity 
+but it converges too slowly to the solution. For faster runs we have to use advanced methods. \cite{trygvasson}
+
+\subsection{Boundary Conditions for PPE}
+There is no explicit boundary condition for pressure is specified, rather we use velocity boundary conditions to get pressure at boundary control volumes. %\cite{tryggvasson book}
+hence (45) at boundary reduces to 
+  \begin{equation}
+ \frac{u_{r,c+1}^{n+1}-u_{b,r}}{\Delta x} + \frac{v_{r+1,c}^{n+1}-v_{r,c}^{n+1}}{\Delta y} = 0
+\end{equation}
+where $u_{b,r}$, the boundary value of velocity is known by velocity boundary conditions. from (47) the $p_{r,c}$ is computed on the boundary and corner control volumes.
+   
+
+\section{Verification}
+The test problems were set without any surface tension model and compared with respective available data.
+\subsection{Lid Driven Cavity test}
+A problem was set test lid driven cavity to get a steady state solution. A square domain of unit length, single fluid and Reynolds number 100, 400, 1000.
+The results are validated by \cite{Ghia1982}. Figure 6-7 shows the x-velocity along vertical centerline and y-velocity along horizontal centerline respectively in the domain. 
+
+\begin{figure}
+ \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{Re100u.eps}
+ \caption{Variation of x-velocity along the vertical centerline at Re=100}
+ \end{subfigure}
+ \begin{subfigure}[p]{1.0\textwidth}
+ \includegraphics[width=\textwidth]{Re100v.eps}
+ \caption{Variation of y-velocity along the vertical centerline at Re=100}
+ \end{subfigure}
+ \caption{Validation at Re=100}
+\end{figure}
+%  
+% \begin{figure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Re400u.eps}
+%  \caption{Variation of x-velocity along the vertical centerline at Re=100}
+%  \end{subfigure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Re400v.eps}
+%  \caption{Variation of y-velocity along the vertical centerline at Re=100}
+%  \end{subfigure}
+%  \caption{Validation at Re=400}
+% \end{figure}
+%  
+%  \begin{figure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Re1000u.eps}
+%  \caption{Variation of x-velocity along the vertical centerline at Re=100}
+%  \end{subfigure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Re1000v.eps}
+%  \caption{Variation of y-velocity along the vertical centerline at Re=100}
+%  \end{subfigure}
+%  \caption{Validation at Re=400}
+% \end{figure}
+%  
+%   \begin{figure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Str100.eps}
+%  \caption{Stream contours}
+%  \end{subfigure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Vor100.eps}
+%  \caption{Vorticity contours}
+%  \end{subfigure}
+%  \caption{Validation at Re=100}
+% \end{figure}
+% 
+%   \begin{figure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Str400.eps}
+%  \caption{Stream contours}
+%  \end{subfigure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Vor400.eps}
+%  \caption{Vorticity contours}
+%  \end{subfigure}
+%  \caption{Validation at Re=400}
+% \end{figure}
+% 
+%   \begin{figure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Str1000.eps}
+%  \caption{Stream contours}
+%  \end{subfigure}
+%  \begin{subfigure}[p]{1.0\textwidth}
+%  \includegraphics[width=\textwidth]{Vor1000.eps}
+%  \caption{Vorticity contours}
+%  \end{subfigure}
+%  \caption{Validation at Re=1000}
+% \end{figure}
+%  
+  
+  \subsection{Falling Droplet}
+ Falling droplet problem was set up and compared with Gerris simulations with exactly same input conditions.
+ \begin{itemize}
+ \item Domain: [0,3] x [0,3]
+ \item Droplet: Diameter = 0.3, Center (1.5,2.5)
+ \item Grid size: 96 x 96
+ \item Time Step 0.00125
+ \item Density ratio $\frac{\rho_G}{\rho_L}$, $\rho_r=0.5$
+ \item Viscosity ratio $\frac{\mu_G}{\mu_L}$, $\mu_r=1.0$ 
+ \item $Re_L=100$
+ \item $Fr = 0.1$
+ \end{itemize}
+ 
+\begin{figure}
+ \begin{subfigure}[p]{0.5\textwidth}
+ \includegraphics[width=\textwidth]{drop_fall_0.eps} 
+ \caption{At t = 0}
+ \end{subfigure}
+  \begin{subfigure}[p]{0.5\textwidth}
+ \includegraphics[width=\textwidth]{drop_fall_100.eps}
+ \caption{At t = 0.125}
+ \end{subfigure}
+ 
+  \begin{subfigure}[p]{0.5\textwidth}
+ \includegraphics[width=\textwidth]{drop_fall_200.eps} 
+ \caption{At t = 0.25}
+ \end{subfigure}
+  \begin{subfigure}[p]{0.5\textwidth}
+ \includegraphics[width=\textwidth]{drop_fall_300.eps} 
+ \caption{At t = 0.375}
+ \end{subfigure}
+ \caption{Falling Droplet test, (Blue-Gerris, Red-LVIRA)}
+ \end{figure}
+  
+  \subsection{Rayleigh-Taylor Instability}
+  Rayleigh-Taylor Instability is one of the most common test problems which are studied for verification, the problem was set up as in \cite{Rudman1997}
+   \begin{itemize}
+ \item Domain: [0,1] x [0,3]
+ \item Initial Interface: $y=2-0.02cos(\pi x)$
+ \item Grid size: 64 x 192
+ \item Time Step 0.005
+ \item Density ratio $\frac{\rho_G}{\rho_L}$, $\rho_r=\frac{5}{6}$
+ \item Viscosity ratio $\frac{\mu_G}{\mu_L}$, $\mu_r=1.0$ 
+ \item $Re_L=500$
+ \item $Fr = 0.5$
+ \end{itemize}
+ Results are shown in Figure <>
+  % Flag not final images, final 
+ \begin{figure}
+ \begin{subfigure}[p]{0.3\textwidth}
+ \includegraphics[width=\textwidth]{Rudman_t4.eps} 
+ \caption{At t = 4}
+ \end{subfigure}
+  \begin{subfigure}[p]{0.3\textwidth}
+ \includegraphics[width=\textwidth]{Rudman_t6.eps}
+ \caption{At t = 6}
+ \end{subfigure}
+   \begin{subfigure}[p]{0.3\textwidth}
+ \includegraphics[width=\textwidth]{Rudman_t8.eps}
+ \caption{At t = 8}
+ \end{subfigure}
+ \caption{Comparison of Rayleigh-Taylor Instability test,(Blue-\cite{Rudman1997}, Red-LVIRA)}
+ \end{figure}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+\end{document} 

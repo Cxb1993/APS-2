@@ -1,0 +1,22 @@
+\contentsline {chapter}{\numberline {1}Simulation Methods}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}The Volume of Fluid method}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Motivation for a new method}{2}{section.1.3}
+\contentsline {section}{\numberline {1.4}Least Squares of Volume of Fluid Interface Reconstruction Algorithm}{2}{section.1.4}
+\contentsline {section}{\numberline {1.5}Interface Reconstruction}{2}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Step I : Obtain F field}{2}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}Step II : Initial guess of slope}{4}{subsection.1.5.2}
+\contentsline {subsection}{\numberline {1.5.3}Step III : Find Quadrant}{4}{subsection.1.5.3}
+\contentsline {subsection}{\numberline {1.5.4}Step IV : Calculate angle, $\theta $}{4}{subsection.1.5.4}
+\contentsline {subsubsection}{Function atan() in GCC}{5}{section*.7}
+\contentsline {subsection}{\numberline {1.5.5}Step V : Identify shape}{6}{subsection.1.5.5}
+\contentsline {subsection}{\numberline {1.5.6}Step VI : Calculate prependicular distance }{8}{subsection.1.5.6}
+\contentsline {subsection}{\numberline {1.5.7}Step VII : Extrapolate line}{10}{subsection.1.5.7}
+\contentsline {subsection}{\numberline {1.5.8}Step VIII: Calculate Norm}{11}{subsection.1.5.8}
+\contentsline {subsection}{\numberline {1.5.9}Step IX : Minimize Norm}{11}{subsection.1.5.9}
+\contentsline {section}{\numberline {1.6}Advection}{11}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}Flux Calculation}{12}{subsection.1.6.1}
+\contentsline {subsubsection}{Triangle}{12}{section*.17}
+\contentsline {subsubsection}{Trapezium}{12}{section*.19}
+\contentsline {subsubsection}{Compliment of a triangle}{14}{section*.22}
+\contentsline {subsection}{\numberline {1.6.2}Rectangle}{14}{subsection.1.6.2}

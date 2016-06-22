@@ -1,0 +1,27 @@
+\begin{thebibliography}{4}
+\addcontentsline{toc}{chapter}{\bibname}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[Chen(1993)]{Chen1993}
+Chen, K. (1993) Wave formation in the gravity‐driven low‐reynolds number
+  flow of two liquid films down an inclined plane.
+\newblock \textit{Physics of Fluids A: Fluid Dynamics (1989-1993)}
+  \textbf{5}(12).
+
+\bibitem[Hooper and Boyd(1987)]{HB1987}
+Hooper, A.~P. and Boyd, W. G.~C. (1987) Shear-flow instability due to a wall
+  and a viscosity discontinuity at the interface.
+\newblock \textit{Journal of Fluid Mechanics} \textbf{179}, 201--225.
+
+\bibitem[Loewenherz and Lawrence(1989)]{LL1989}
+Loewenherz, D.~S. and Lawrence, C.~J. (1989) The effect of viscosity
+  stratification on the stability of a free surface flow at low reynolds
+  number.
+\newblock \textit{Physics of Fluids A: Fluid Dynamics (1989-1993)}
+  \textbf{1}(10).
+
+\bibitem[Yih(1967)]{Yih1967}
+Yih, C.-S. (1967) Instability due to viscosity stratification.
+\newblock \textit{Journal of Fluid Mechanics} \textbf{27}, 337--352.
+
+\end{thebibliography}

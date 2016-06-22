@@ -1,0 +1,85 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\citation{Hirt1981}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Simulation Methods}{1}{chapter.1}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}The Volume of Fluid method}{1}{section.1.2}}
+\citation{Pilliod2004}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Motivation for a new method}{2}{section.1.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Least Squares of Volume of Fluid Interface Reconstruction Algorithm}{2}{section.1.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.5}Interface Reconstruction}{2}{section.1.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.1}Step I : Obtain F field}{2}{subsection.1.5.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Advecting volume fraction using finite difference method\relax }}{3}{figure.caption.4}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{figure1}{{1.1}{3}{Advecting volume fraction using finite difference method\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Ini}}}{3}{subfigure.1.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {After advecs}}}{3}{subfigure.1.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {After adve}}}{3}{subfigure.1.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {After ads}}}{3}{subfigure.1.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.2}Step II : Initial guess of slope}{4}{subsection.1.5.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.3}Step III : Find Quadrant}{4}{subsection.1.5.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Interface normal direction}}{4}{figure.caption.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.4}Step IV : Calculate angle, $\theta $}{4}{subsection.1.5.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Angle definition of interface}}{5}{figure.caption.6}}
+\@writefile{toc}{\contentsline {subsubsection}{Function atan() in GCC}{5}{section*.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Angle value returned by gcc compiler\relax }}{6}{figure.caption.8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.5}Step V : Identify shape}{6}{subsection.1.5.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Area of the triangle made by dark fluid in the cell\relax }}{7}{figure.caption.9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Area of a trapezium made by the dark fluid in the cell\relax }}{7}{figure.caption.10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces When the cell is reoriented to make normal lie in first quadrant\relax }}{8}{figure.caption.11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.6}Step VI : Calculate prependicular distance }{8}{subsection.1.5.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Prependicular distance in a triangle\relax }}{8}{figure.caption.12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces Prependicular distance for a trapezium\relax }}{9}{figure.caption.13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Prependicular distance for compliment of the triangle\relax }}{9}{figure.caption.14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.7}Step VII : Extrapolate line}{10}{subsection.1.5.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Normal form of a line in the cell\relax }}{10}{figure.caption.15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.12}{\ignorespaces Extrapolation of the line in 3 X 3 cell\relax }}{10}{figure.caption.16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.8}Step VIII: Calculate Norm}{11}{subsection.1.5.8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.9}Step IX : Minimize Norm}{11}{subsection.1.5.9}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.6}Advection}{11}{section.1.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6.1}Flux Calculation}{12}{subsection.1.6.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Triangle}{12}{section*.17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.13}{\ignorespaces Cases for a triangle in flux calculation\relax }}{12}{figure.caption.18}}
+\@writefile{toc}{\contentsline {subsubsection}{Trapezium}{12}{section*.19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.14}{\ignorespaces Flux calculation for trapezium for $\theta <\frac  {\pi }{4}$\relax }}{13}{figure.caption.20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.15}{\ignorespaces Different cases for flux calculation for trapezium}}{13}{figure.caption.21}}
+\@writefile{toc}{\contentsline {subsubsection}{Compliment of a triangle}{14}{section*.22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.16}{\ignorespaces Different cases for flux calculation for compliment of a triangle}}{14}{figure.caption.23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6.2}Rectangle}{14}{subsection.1.6.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.17}{\ignorespaces Flux calculation for rectangle\relax }}{14}{figure.caption.24}}
+\@setckpt{methods/methods}{
+\setcounter{page}{16}
+\setcounter{equation}{13}
+\setcounter{enumi}{2}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{1}
+\setcounter{section}{6}
+\setcounter{subsection}{2}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{17}
+\setcounter{table}{0}
+\setcounter{Item}{2}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{18}
+\setcounter{parentequation}{0}
+\setcounter{float@type}{4}
+\setcounter{NAT@ctr}{0}
+\setcounter{ContinuedFloat}{0}
+\setcounter{KVtest}{0}
+\setcounter{subfigure}{0}
+\setcounter{subfigure@save}{4}
+\setcounter{lofdepth}{1}
+\setcounter{subtable}{0}
+\setcounter{subtable@save}{0}
+\setcounter{lotdepth}{1}
+\setcounter{section@level}{2}
+}

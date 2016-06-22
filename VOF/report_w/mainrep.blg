@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: mainrep.aux
+The style file: iitbauthyr.bst
+A level-1 auxiliary file: acknowledgement.aux
+A level-1 auxiliary file: certificate.aux
+A level-1 auxiliary file: intro/introduction.aux
+A level-1 auxiliary file: lit/literature.aux
+A level-1 auxiliary file: methods/methods.aux
+A level-1 auxiliary file: expt/experimental.aux
+A level-1 auxiliary file: rnd/results.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: mylit.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Merlin.mbs v4.21 2009-07-09. 
+You've used 28 entries,
+            4513 wiz_defined-function locations,
+            1128 strings with 13100 characters,
+and the built_in function-call counts, 26978 in all, are:
+= -- 1847
+> -- 653
+< -- 52
++ -- 222
+- -- 192
+* -- 4183
+:= -- 2923
+add.period$ -- 53
+call.type$ -- 28
+change.case$ -- 201
+chr.to.int$ -- 28
+cite$ -- 56
+duplicate$ -- 2404
+empty$ -- 2116
+format.name$ -- 380
+if$ -- 4769
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 394
+newline$ -- 338
+num.names$ -- 112
+pop$ -- 831
+preamble$ -- 1
+purify$ -- 176
+quote$ -- 2
+skip$ -- 839
+stack$ -- 0
+substring$ -- 933
+swap$ -- 2299
+text.length$ -- 36
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 310
+warning$ -- 0
+while$ -- 119
+width$ -- 0
+write$ -- 478

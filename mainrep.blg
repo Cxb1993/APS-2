@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: mainrep.aux
+The style file: iitbauthyr.bst
+A level-1 auxiliary file: declaration.aux
+A level-1 auxiliary file: certificate.aux
+A level-1 auxiliary file: acknowledgement.aux
+A level-1 auxiliary file: methods/methods.aux
+A level-1 auxiliary file: Navier-Stokes/ns.aux
+A level-1 auxiliary file: Multigrid/multigrid.aux
+A level-1 auxiliary file: surface_tension/surface_tension.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: mylit.bib
+Warning--I didn't find a database entry for "Briggs1987"
+Warning--I didn't find a database entry for "Wesseling1992"
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Merlin.mbs v4.21 2009-07-09. 
+You've used 15 entries,
+            4513 wiz_defined-function locations,
+            1002 strings with 10835 characters,
+and the built_in function-call counts, 13672 in all, are:
+= -- 942
+> -- 317
+< -- 26
++ -- 108
+- -- 93
+* -- 2062
+:= -- 1513
+add.period$ -- 25
+call.type$ -- 15
+change.case$ -- 102
+chr.to.int$ -- 15
+cite$ -- 30
+duplicate$ -- 1232
+empty$ -- 1082
+format.name$ -- 177
+if$ -- 2405
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 200
+newline$ -- 200
+num.names$ -- 60
+pop$ -- 433
+preamble$ -- 1
+purify$ -- 91
+quote$ -- 2
+skip$ -- 442
+stack$ -- 0
+substring$ -- 440
+swap$ -- 1141
+text.length$ -- 16
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 158
+warning$ -- 0
+while$ -- 65
+width$ -- 0
+write$ -- 276
+(There were 2 warnings)
